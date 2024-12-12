@@ -5,14 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { MailModule } from 'src/mail/mail.module';
+import { SmartMeterModule } from '../smart-meter/smart-meter.module';  // Import the SmartMeterModule
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity]),
+  imports: [TypeOrmModule.forFeature([UserEntity]),SmartMeterModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1d' },
 }),
-    MailModule],
+    MailModule], 
   controllers: [UsersController],
   providers: [UsersService],
   exports: [UsersService],

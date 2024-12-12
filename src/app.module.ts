@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'db/data-source';
 import { UsersModule } from './users/users.module';
 import { CurrentUserMiddleware } from './utility/common/middlewares/current-user.middleware';
+import { SmartMeterModule } from './smart-meter/smart-meter.module';
 import path from 'path';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule,SmartMeterModule],
   controllers: [],
   providers: [],
 })
